@@ -38,7 +38,7 @@ actions = {
         },
         "Direction_10":"Action_030",  "_010":"The first element of the range is integer number",
         "Direction_20":"Action_010",  "_020":"The first element of the range is real number",
-        "Direction_30":"Action_340",  "_030":"The first element of range is equal to 7",
+        "Direction_30":"Action_330",  "_030":"The first element of range is equal to 7",
         "Direction_40":"Action_300",  "_040":"The first element of range is equal to 777"
     },
 "Action_030":{
@@ -62,7 +62,7 @@ actions = {
         },
         "Direction_10":"Action_050",  "_010":"Not the first element of the range is integer number",
         "Direction_20":"Action_010",  "_020":"Not the first element of the range is real number",
-        "Direction_30":"Action_340",  "_030":"Not the first element of range is equal to 7",
+        "Direction_30":"Action_330",  "_030":"Not the first element of range is equal to 7",
         "Direction_40":"Action_350",  "_040":"Not the first element of range is equal to 777"
     },
 "Action_050":{
@@ -100,6 +100,19 @@ actions = {
         },
         "Direction_10":"Action_010", "_010":"Done"
     },
+"Action_330":{
+        "_agent_position":{
+            "en-US":"Just after found 7 in range, va-egent are checking element following 7",
+            "ru-RU":"Сразу после того, как найдено 7 в диапазоне, v-agent проверяет элемент, следующий за 7"
+        },
+        "_action_description":{
+            "_010":"--> i_main = i_main + 1",
+            "_020":"--> Get element from array"
+        },
+        "Direction_10":"Action_END", "_010":"Array is empty or the end of array",
+        "Direction_20":"Action_350",  "_020":"Element equal 777",
+        "Direction_30":"Action_340",  "_030":"Element not equal 777"
+    },
 "Action_340":{
         "_agent_position":{
             "en-US":"After found 7 in range start skipping elements till meet 777 or the end off array",
@@ -110,8 +123,18 @@ actions = {
             "_020":"--> Get element from array"
         },
         "Direction_10":"Action_END", "_010":"Array is empty or the end of array",
-        "Direction_20":"Action_350",  "_020":"Element equal 777",
+        "Direction_20":"Action_345",  "_020":"Element equal 777",
         "Direction_30":"Action_340",  "_030":"Element not equal 777"
+    },
+"Action_345":{
+        "_agent_position":{
+            "en-US":"v-agent found 777 as end of range not just after 7",
+            "ru-RU":"v-agent обнаружил, что 777 - это конец диапазона не сразу после 7"
+        },
+        "_action_description":{
+            "_010":"--> total_number_of_ranges_from_777_to_777_with_7 += 1"
+        },
+        "Direction_10":"Action_350",  "_010":"Done"
     },
 "Action_350":{
         "_agent_position":{
@@ -149,8 +172,8 @@ M = [1.4, 777, 2, 4.3, 7, 8, 777, 777, 5, 6.5, 777, 3]
 M = [777,2,1,6,5,777]
 M = [777,5,1,6,5,2,1,5,3,777]
 M = [2,3,4,777, 777, 2]
-M = [1.4, 777, 5, 4.3, 6, 8, 777, 9,23, 777, 5, 6.5, 777, 3, 777, 5, 6.5, 777] 
 M = [1.4, 777, 5, 4.3, 7, 8, 777, 9,23, 777, 5, 6.5, 777, 3, 777, 5, 6.5, 777] 
+#M = [1.4, 777, 5, 4.3, 7, 777, 9,23, 777, 5, 6.5, 777, 3, 777, 5, 6.5, 777]
 
 #########
 locale_lang_code_defaulf = 'en-US'
@@ -164,6 +187,10 @@ i_main = -1 # by all array
 flag_01 = -1
 range_list = []
 current_element = 'foo'
+
+total_number_of_ranges_from_777_to_777 = 0
+total_number_of_ranges_from_777_to_777_with_7 = 0
+
 current_action = "Action_000"
 direction = "Direction_10"
 
@@ -250,6 +277,17 @@ while 1 == 1:
       i = 0
       flag_01 = 0
       direction = "Direction_10" # Done    
+    ### Action_330 ##################################
+    if current_action == "Action_330":
+      i_main += 1 
+      current_element = M[i_main]
+      if i_main > len(M) - 1:
+          direction = "Direction_10" # Array is empty or the end of array
+      if i_main <= len(M) - 1:
+        if M[i_main] == 777:
+          direction = "Direction_20" # Element equal 777
+        if M[i_main] != 777:
+          direction = "Direction_30" # Element not equal 777  
     ### Action_340 ##################################
     if current_action == "Action_340":
       i_main += 1 
@@ -261,11 +299,17 @@ while 1 == 1:
           direction = "Direction_20" # Element equal 777
         if M[i_main] != 777:
           direction = "Direction_30" # Element not equal 777  
+    ### Action_345 ##################################
+    if current_action == "Action_345":
+      current_element = M[i_main]
+      total_number_of_ranges_from_777_to_777_with_7 += 1    
+      direction = "Direction_10" 
     ### Action_350 ##################################
     if current_action == "Action_350":
       current_element = M[i_main]
       sum_01 = sum_01 + sum(range_list)
       range_list = []  
+      total_number_of_ranges_from_777_to_777 += 1
       direction = "Direction_10" 
     continue
   break # end of loop where 1 == 1
@@ -275,5 +319,6 @@ if current_action.find("END") == -1:
 if current_action.find("END") != -1:
     print("Final action was:["+ current_action + "] after [" + previous_action + "]")
     print("\nSum is [" + str(sum_01) + ']')
+    print("\ntotal_number_of_ranges_from_777_to_777 is [" + str(total_number_of_ranges_from_777_to_777) + ']')
+    print("\ntotal_number_of_ranges_from_777_to_777_with_7 is [" + str(total_number_of_ranges_from_777_to_777_with_7) + ']')
     print('\nThe End')
-
