@@ -1,0 +1,535 @@
+## U-040-40/VAOP code in Classes with actions tracking tools
+
+####################################################################
+### VA-script | Start >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+####################################################################
+
+class VA_script:
+  def getVaScript():
+    va_script = {
+    "Action_000":{
+        "_agent_position":{
+            "en-US":"In Init block of VA-box",
+            "ru-RU":"В блоке Init VA-box"
+        },
+        "_action_description":{
+            "_010":"--> init action"
+        },
+        "Direction_10":"Action_300",  "_010":"Done"
+    },
+"Action_010":{
+        "_agent_position":{
+            "en-US":"Checking -> The v-agent is checking the end of array or the first element of range or not?",
+            "ru-RU":"Проверка -> Это конец массива или первый элемент диапазона или нет?"
+        },
+        "_action_description":{
+            "_010":"empty"
+        },
+        "Direction_10":"Action_9000", "_010":"The end of array",
+        "Direction_20":"Action_020",  "_020":"The first element of the range",
+        "Direction_30":"Action_040",  "_030":"Not the first element of the range"
+    },
+"Action_020":{
+        "_agent_position":{
+            "en-US":"The first element of the range || Checking -> The v-agent is checking if it is the integer number, the real number, equal to 7 or equal to 777",
+            "ru-RU":"Первый элемент диапазона || Проверка -> Целое число или действительное, равно 7 или равно 777"
+        },
+        "_action_description":{
+            "_010":"empty"
+        },
+        "Direction_10":"Action_030",  "_010":"The first element of the range is integer number",
+        "Direction_20":"Action_010",  "_020":"The first element of the range is real number",
+        "Direction_30":"Action_340",  "_030":"The first element of range is equal to 7",
+        "Direction_40":"Action_300",  "_040":"The first element of range is equal to 777"
+    },
+"Action_030":{
+        "_agent_position":{
+            "en-US":"The first element of the range ||The first element of the range is integer number | The v-agent appends the first element of range to range_list",
+            "ru-RU":"Первый элемент диапазона || Первый элемент диапазона - целое число | Добавить первый элемент диапазона в range_list"
+        },
+        "_action_description":{
+            "_010":"--> The first element of range is integer number",
+            "_020":"--> Append the first element of range to range_list"
+        },
+        "Direction_10":"Action_010", "_010":"Done"
+    },
+"Action_040":{
+        "_agent_position":{
+            "en-US":"Not the first element of the range || Checking -> The v-agent is checking if it is the integer number, the real number, equal 7 or equal 777",
+            "ru-RU":"Не первый элемент диапазона || Проверка -> Целое число, или действительное, или равное 7, или равное 777"
+        },
+        "_action_description":{
+            "_010":"Not the first element of the range"
+        },
+        "Direction_10":"Action_050",  "_010":"Not the first element of the range is integer number",
+        "Direction_20":"Action_010",  "_020":"Not the first element of the range is real number",
+        "Direction_30":"Action_340",  "_030":"Not the first element of range is equal to 7",
+        "Direction_40":"Action_350",  "_040":"Not the first element of range is equal to 777"
+    },
+"Action_050":{
+        "_agent_position":{
+            "en-US":"Not the first element of the range || Checking -> The v-agent is checking if this element appears the third element of range after the last element added  -> range_list.append(M[i_main])",
+            "ru-RU":"Не первый элемент диапазона || Проверка -> Если этот элемент является третьим элементом диапазона после последнего добавления -> range_list.append (M [i_main])"
+        },
+        "_action_description":{
+            "_010":"--> Element is integer number"
+        },
+        "Direction_10":"Action_010", "_010":"Done"
+    },
+"Action_300":{
+        "_agent_position":{
+            "en-US":"Scanning the array || The v-agent is looking for 777 as the start of the range",
+            "ru-RU":"Сканирование массива || поиск 777 в качестве начала диапазона"
+        },
+        "_action_description":{
+            "_010":"empty"
+        },
+        "Direction_10":"Action_9000", "_010":"The end of array",
+        "Direction_20":"Action_310",  "_020":"The element is equal 777",
+        "Direction_30":"Action_300",  "_030":"The element is not equal 777"
+    },
+"Action_310":{
+        "_agent_position":{
+            "en-US":"Scanning the array || The v-agent found 777 as the start of the new range",
+            "ru-RU":"Сканирование массива || Найдено 777 как начало нового диапазона"
+        },
+        "_action_description":{
+            "_010":"empty"
+        },
+        "Direction_10":"Action_010", "_010":"Done"
+    },
+"Action_340":{
+        "_agent_position":{
+            "en-US":"After the v-agent found 7 in the range, the v-agent starts skipping elements till meet 777 or the end off array",
+            "ru-RU":"После того, как найдено 7 в диапазоне, начните пропускать элементы до встречи 777 или до конца массива"
+        },
+        "_action_description":{
+            "_010":"empty"
+        },
+        "Direction_10":"Action_9000", "_010":"Array is empty or the end of array",
+        "Direction_20":"Action_350",  "_020":"Element equal 777",
+        "Direction_30":"Action_340",  "_030":"Element not equal 777"
+    },
+"Action_350":{
+        "_agent_position":{
+            "en-US":"After the v-agent found 777 as end of range | sum_01 = sum_01 + sum(range_list)",
+            "ru-RU":"После того, как найдено 777 как конец диапазона | sum_01 = sum_01 + sum(range_list)"
+        },
+        "_action_description":{
+            "_010":"empty"
+        },
+        "Direction_10":"Action_300", "_010":"Done"
+    },
+"Action_9000":{
+        "_agent_position":{
+            "en-US":"The v-agent found the end of array",
+            "ru-RU":"v-agent нашел конец массива"
+        },
+        "_action_description":{
+            "_010":"empty"
+        },
+        "Direction_10":"Action_END", "_010":"Done"
+    }
+}
+
+    return va_script
+####################################################################
+### VA-script | End <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+####################################################################
+
+####################################################################
+### Actions Class | Start >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+####################################################################
+
+class Actions:
+  
+  ### Action_000 ###################################################
+  def Action_000(va_data):
+
+    ### Start | Init setting
+ 
+    va_data['sum_01'] = {}
+    va_data['sum_01']['v'] = 0
+    va_data['sum_01']['d'] = "The sum of elements of array"
+
+    va_data['i'] = {}
+    va_data['i']['v'] = 0
+    va_data['i']['d'] = "The index in the range"
+
+    va_data['i_main'] = {}
+    va_data['i_main']['v'] = -1
+    va_data['i_main']['d'] = "The index in the all array"   
+
+    va_data['flag_01'] = {}
+    va_data['flag_01']['v'] = -1
+    va_data['flag_01']['d'] = "It is for counting is it the third element or not"
+
+    va_data['range_list'] = {}
+    va_data['range_list']['v'] = []
+    va_data['range_list']['d'] = "It is the part of array between 777 and 777"
+
+    va_data['current_element'] = {}
+    va_data['current_element']['v'] = 'Unknown'
+    va_data['current_element']['d'] = "It is element of array, the v-agent is working with in this time in the current Action_xxx"
+
+    va_data['custom_log'] = {}
+    va_data['custom_log']['v'] = [] 
+    va_data['custom_log']['d'] = "This is the log array for tracking custom variables in actions."
+    """
+    va_data[''] = {}
+    va_data['']['v'] = 0
+    va_data['']['d'] = "Empty"
+    """
+    ### End | Init setting
+
+    return va_data
+
+  ### Action_010 ###################################################
+  def Action_010(va_data):
+    va_data['i']['v'] += 1 
+    va_data['i_main']['v'] += 1
+    va_data['flag_01']['v'] += 1
+    if va_data['i_main']['v'] > len(va_data['M']['v']) - 1:
+        va_data['va']['direction']['v'] = "Direction_10" # The end of array
+    if va_data['i_main']['v'] <= len(va_data['M']['v']) - 1:
+        va_data['current_element']['v'] = va_data['M']['v'][va_data['i_main']['v']]
+        if va_data['i_main']['v'] <= len(va_data['M']['v']) - 1:
+          if va_data['i']['v'] == 1:
+            va_data['va']['direction']['v'] = "Direction_20" # First element of range
+          if va_data['i']['v'] != 1:
+            va_data['va']['direction']['v'] = "Direction_30" # Not first element of range
+    ### for log
+    va_data['custom_log']['v'].append('i')
+    va_data['custom_log']['v'].append('i_main')
+    va_data['custom_log']['v'].append('current_element')
+    va_data['custom_log']['v'].append('flag_01')
+    return va_data
+
+  ### Action_020 ###################################################
+  def Action_020(va_data):
+    va_data['current_element']['v'] = va_data['M']['v'][va_data['i_main']['v']]
+    if int(va_data['M']['v'][va_data['i_main']['v']]) == va_data['M']['v'][va_data['i_main']['v']]:
+     va_data['va']['direction']['v'] = "Direction_10"
+    if int(va_data['M']['v'][va_data['i_main']['v']]) != va_data['M']['v'][va_data['i_main']['v']]:
+      va_data['va']['direction']['v'] = "Direction_20"
+    if va_data['M']['v'][va_data['i_main']['v']] == 7:
+      va_data['va']['direction']['v'] = "Direction_30"
+    if va_data['M']['v'][va_data['i_main']['v']] == 777:
+      va_data['va']['direction']['v'] = "Direction_40"
+    ### for log
+    va_data['custom_log']['v'].append('i')
+    va_data['custom_log']['v'].append('i_main')
+    va_data['custom_log']['v'].append('current_element')
+    va_data['custom_log']['v'].append('flag_01')
+
+    return va_data
+  ### Action_030 ###################################################
+  def Action_030(va_data):
+    va_data['current_element']['v'] = va_data['M']['v'][va_data['i_main']['v']]
+    va_data['range_list']['v'].append(va_data['M']['v'][va_data['i_main']['v']])
+    va_data['flag_01']['v'] = 0
+    va_data['va']['direction']['v'] = "Direction_10"
+    ### for log
+    va_data['custom_log']['v'].append('i')
+    va_data['custom_log']['v'].append('i_main')
+    va_data['custom_log']['v'].append('current_element')
+    va_data['custom_log']['v'].append('flag_01')
+
+    return va_data
+  ### Action_040 ###################################################
+  def Action_040(va_data):
+    va_data['current_element']['v'] = va_data['M']['v'][va_data['i_main']['v']]
+    if int(va_data['M']['v'][va_data['i_main']['v']]) == va_data['M']['v'][va_data['i_main']['v']]:
+      va_data['va']['direction']['v'] = "Direction_10"
+    if int(va_data['M']['v'][va_data['i_main']['v']]) != va_data['M']['v'][va_data['i_main']['v']]:
+      va_data['va']['direction']['v'] = "Direction_20"
+    if va_data['M']['v'][va_data['i_main']['v']] == 7:
+      va_data['va']['direction']['v'] = "Direction_30"
+    if va_data['M']['v'][va_data['i_main']['v']] == 777:
+      va_data['va']['direction']['v'] = "Direction_40"
+    ### for log
+    va_data['custom_log']['v'].append('i')
+    va_data['custom_log']['v'].append('i_main')
+    va_data['custom_log']['v'].append('current_element')
+    va_data['custom_log']['v'].append('flag_01')
+
+    return va_data
+  ### Action_050 ###################################################
+  def Action_050(va_data):
+    va_data['current_element']['v'] = va_data['M']['v'][va_data['i_main']['v']]
+    if va_data['flag_01']['v'] == 3:
+      va_data['range_list']['v'].append(va_data['M']['v'][va_data['i_main']['v']])
+      va_data['flag_01']['v'] = 0
+    va_data['va']['direction']['v'] = "Direction_10"
+    ### for log
+    va_data['custom_log']['v'].append('i')
+    va_data['custom_log']['v'].append('i_main')
+    va_data['custom_log']['v'].append('current_element')
+    va_data['custom_log']['v'].append('flag_01')
+    va_data['custom_log']['v'].append(va_data['range_list'])
+
+    return va_data
+  ### Action_300 ###################################################
+  def Action_300(va_data):
+    va_data['i_main']['v'] += 1 
+    if va_data['i_main']['v'] > len(va_data['M']['v']) - 1:
+        va_data['va']['direction']['v'] = "Direction_10" # Array is empty or the end of array
+    if va_data['i_main']['v'] <= len(va_data['M']['v']) - 1:
+      va_data['current_element']['v'] = va_data['M']['v'][va_data['i_main']['v']]
+      if va_data['M']['v'][va_data['i_main']['v']] == 777:
+        va_data['va']['direction']['v'] = "Direction_20" # Element equal 777
+      if va_data['M']['v'][va_data['i_main']['v']] != 777:
+        va_data['va']['direction']['v'] = "Direction_30" # Element not equal 777  
+    ### for log
+    va_data['custom_log']['v'].append('i')
+    va_data['custom_log']['v'].append('i_main')
+    va_data['custom_log']['v'].append('current_element')
+
+    return va_data  
+  ### Action_310 ###################################################
+  def Action_310(va_data):
+    va_data['current_element']['v'] = va_data['M']['v'][va_data['i_main']['v']]
+    va_data['i']['v'] = 0
+    va_data['flag_01']['v'] = 0
+    va_data['va']['direction']['v'] = "Direction_10" # Done   
+    ### for log
+    va_data['custom_log']['v'].append('i')
+    va_data['custom_log']['v'].append('i_main')
+    va_data['custom_log']['v'].append('current_element')
+    va_data['custom_log']['v'].append('flag_01')
+
+    return va_data
+  ### Action_340 ###################################################
+  def Action_340(va_data):
+    va_data['i_main']['v'] += 1 
+    va_data['current_element']['v'] = va_data['M']['v'][va_data['i_main']['v']]
+    if va_data['i_main']['v'] > len(va_data['M']['v']) - 1:
+        va_data['va']['direction']['v'] = "Direction_10" # Array is empty or the end of array
+    if va_data['i_main']['v'] <= len(va_data['M']['v']) - 1:
+      if va_data['M']['v'][va_data['i_main']['v']] == 777:
+        va_data['va']['direction']['v'] = "Direction_20" # Element equal 777
+      if va_data['M']['v'][va_data['i_main']['v']] != 777:
+        va_data['va']['direction']['v'] = "Direction_30" # Element not equal 777  
+    ### for log
+    va_data['custom_log']['v'].append('i')
+    va_data['custom_log']['v'].append('i_main')
+    va_data['custom_log']['v'].append('current_element')
+    va_data['custom_log']['v'].append('flag_01')
+
+    return va_data
+
+  ### Action_350 ###################################################
+  def Action_350(va_data):
+    va_data['current_element']['v'] = va_data['M']['v'][va_data['i_main']['v']]
+    va_data['sum_01']['v'] = va_data['sum_01']['v'] + sum(va_data['range_list']['v'])
+    va_data['range_list']['v'] = []  
+    va_data['va']['direction']['v'] = "Direction_10" 
+    ### for log
+    va_data['custom_log']['v'].append('i')
+    va_data['custom_log']['v'].append('i_main')
+    va_data['custom_log']['v'].append('current_element')
+    va_data['custom_log']['v'].append('flag_01')
+    va_data['custom_log']['v'].append('sum_01')
+    return va_data
+  ### Action_9000 ###################################################
+  def Action_9000(va_data):
+
+    va_data['va']['direction']['v'] = "Direction_10" 
+
+    return va_data
+
+####################################################################
+### Actions Class | End <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+####################################################################
+####################################################################
+### Actions_tools | Start >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+####################################################################
+class Actions_tools:
+
+  def Action_variables_tracking_row(va_data):
+    print(">>> custom_log -->")
+    if len(va_data['custom_log']['v']) == 0:
+      print("\tEmpty")
+    for temp in va_data['custom_log']['v']:
+      print("\t" + temp ,"= [" + str(va_data[temp]['v']) + "] <-- " +  va_data[temp]['d'])
+    va_data['custom_log']['v'] = []
+
+    return va_data 
+
+####################################################################
+### Actions_tools Class | End <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+####################################################################
+####################################################################
+### VA_box | Start >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+####################################################################
+
+class VA_box:
+  
+  def start(va_data):
+
+    ### Start | The VAOP variables setting
+
+    va_data['abbreviations'] = {}
+    va_data['abbreviations']['va'] = 'The VAOP variables setting'
+
+    if 'va' not in va_data:
+      va_data['va'] = {}
+    va_data['va']['jump'] = {}
+    va_data['va']['jump']['v'] = 0
+    va_data['va']['jump']['d'] = "The sequential number of the v-agent's jump"
+
+    va_data['va']['max_jump'] = {}
+    va_data['va']['max_jump']['v'] = 1000
+    va_data['va']['max_jump']['d'] = "The max number of the v-agent's jump. It is for prevent looping."
+
+    va_data['va']['locale_lang_code_defaulf'] = {}
+    va_data['va']['locale_lang_code_defaulf']['v'] = 'en-US'
+    va_data['va']['locale_lang_code_defaulf']['d'] = "The default locale language code"
+
+    if VA_box_tools.isNotDefinedOutsideOfVaBox(va_data['va'],'locale_lang_code'):
+      va_data['va']['locale_lang_code'] = {}
+      va_data['va']['locale_lang_code']['v'] = 'en-US'
+      va_data['va']['locale_lang_code']['d'] = "The locale language code"
+
+    va_data['va']['agent_position'] = {}
+    va_data['va']['agent_position']['v'] = 'Unknown'
+    va_data['va']['agent_position']['d'] = "It is info about what is v-agent doing at this moment"
+
+    va_data['va']['script'] = {}
+    va_data['va']['script']['v'] = VA_script.getVaScript()
+    va_data['va']['script']['d'] = "VA script"
+
+    va_data['va']['previous_action'] = {}
+    va_data['va']['previous_action']['v'] = 'Unknown'
+    va_data['va']['previous_action']['d'] = "The previous Action"
+
+    va_data['va']['current_action'] = {}
+    va_data['va']['current_action']['v'] = 'Action_000'
+    va_data['va']['current_action']['d'] = "The current Action"
+
+    va_data['va']['direction'] = {}
+    va_data['va']['direction']['v'] = "Direction_10"
+    va_data['va']['direction']['d'] = "Direction"
+
+    ### for va-traking
+    if VA_box_tools.isNotDefinedOutsideOfVaBox(va_data['va'],'is_tracking_on'):
+      va_data['va']['is_tracking_on'] = {}
+      va_data['va']['is_tracking_on']['v'] = False
+      va_data['va']['is_tracking_on']['d'] = "Is tracking ON? (True/False)"
+
+    if VA_box_tools.isNotDefinedOutsideOfVaBox(va_data['va'],'content_of_va_tracking_row'):
+      va_data['va']['content_of_va_tracking_row'] = {}
+      va_data['va']['content_of_va_tracking_row']['v'] = ['jump', 'previous_action', 'direction', 'agent_position']
+      va_data['va']['content_of_va_tracking_row']['d'] = "The content of va-tracking row"
+
+    if VA_box_tools.isNotDefinedOutsideOfVaBox(va_data['va'],'tracking_actions'):
+      va_data['va']['tracking_actions'] = {}
+      va_data['va']['tracking_actions']['v'] = VA_script.getVaScript().keys()
+      va_data['va']['tracking_actions']['d'] = "The list of actions to track"
+
+    if VA_box_tools.isNotDefinedOutsideOfVaBox(va_data['va'],'jump_pause_after_actions'):
+      va_data['va']['jump_pause_after_actions'] = {}
+      va_data['va']['jump_pause_after_actions']['v'] = []
+      va_data['va']['jump_pause_after_actions']['d'] = "The jump pause after actions"
+
+
+    ### End | The VAOP variables setting
+    
+    va_data = Actions.Action_000(va_data)
+  
+    while 1 == 1: 
+      va_data['va']['jump']['v'] += 1
+      if va_data['va']['jump']['v'] > va_data['va']['max_jump']['v']:
+        print(va_data)
+        print("\n\n Error: Looping")
+        break
+
+      temp = va_data['va']['script']['v'][va_data['va']['current_action']['v']][va_data['va']['direction']['v']]
+
+      va_data['va']['previous_action']['v'] = va_data['va']['current_action']['v']
+      va_data['va']['current_action']['v'] = temp  
+
+      if va_data['va']['is_tracking_on']['v'] and (va_data['va']['previous_action']['v'] in va_data['va']['tracking_actions']['v']):
+        va_data = VA_box_tools.VA_tracking_row(va_data)
+        va_data = Actions_tools.Action_variables_tracking_row(va_data)
+        print("\n")
+      
+      if va_data['va']['current_action']['v'] in va_data['va']['script']['v']:
+        if va_data['va']['current_action']['v'] in va_data['va']['jump_pause_after_actions']['v'] and va_data['va']['is_tracking_on']['v'] and (va_data['va']['current_action']['v'] in va_data['va']['tracking_actions']['v']):
+          print("jump_pause_after_actions:", va_data['va']['jump_pause_after_actions']['v'])
+          temp = input("pause ===> after action:[" + va_data['va']['current_action']['v'] + "] <enter> - continue, <space><enter> - break")
+          if temp == ' ':
+            break
+        va_data['va']['direction']['v'] = 'direction unknown'        
+        eval('Actions.' + va_data['va']['current_action']['v'] + "(va_data)")
+      else:
+        break
+
+    print('The v-agent is finished jumping in the action [', va_data['va']['current_action']['v'], ']')    
+
+    return va_data
+
+class VA_box_tools: ##########################################################
+  def isNotDefinedOutsideOfVaBox(var_array, var_key_name):
+    temp = True
+    if var_key_name in var_array:
+      if ('v' in var_array[var_key_name]) and ('d' in var_array[var_key_name]):
+        temp = False
+
+    return temp
+
+  def getAgentPosition(va_data):
+    va_data['va']['agent_position']['v'] = "Now in [" + va_data['va']['previous_action']['v'] + "]"
+    if '_agent_position' in va_data['va']['script']['v'][va_data['va']['previous_action']['v']]:
+      if va_data['va']['locale_lang_code']['v'] in va_data['va']['script']['v'][va_data['va']['previous_action']['v']]['_agent_position']:
+        va_data['va']['agent_position']['v'] = va_data['va']['script']['v'][va_data['va']['previous_action']['v']]['_agent_position'][va_data['va']['locale_lang_code']['v']]
+        if va_data['va']['agent_position']['v'] == '':
+          if va_data['va']['locale_lang_code_defaulf']['v'] in va_data['va']['script']['v'][va_data['va']['previous_action']['v']]['_agent_position']:
+            va_data['va']['agent_position']['v'] = va_data['va']['script']['v'][va_data['va']['previous_action']['v']]['_agent_position'][va_data['va']['locale_lang_code_defaulf']['v']]
+      if va_data['va']['locale_lang_code']['v'] not in va_data['va']['script']['v'][va_data['va']['previous_action']['v']]['_agent_position']:
+        if va_data['va']['locale_lang_code_defaulf']['v'] in va_data['va']['script']['v'][va_data['va']['previous_action']['v']]['_agent_position']:
+          va_data['va']['locale_lang_code']['v'] = va_data['va']['script']['v'][va_data['va']['previous_action']['v']]['_agent_position'][va_data['va']['locale_lang_code_defaulf']['v']]
+    
+    return va_data  
+
+  def VA_tracking_row(va_data):
+    va_data = VA_box_tools.getAgentPosition(va_data)
+    print("va-agent tracking -->")
+    for temp in va_data['va']['content_of_va_tracking_row']['v']:
+      print("\t" + temp ,"= [" + str(va_data['va'][temp]['v']) + "] <-- " +  va_data['va'][temp]['d'])
+    return va_data 
+
+################################# ###################################
+### VA_box | End <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+####################################################################
+
+
+va_data = {}
+va_data['va'] = {}
+
+va_data['va'] = {"is_tracking_on":{"d":"Is tracing ON?? (True/False)","v":True}}
+
+"""
+va_data['va']['tracking_actions'] = {}
+va_data['va']['tracking_actions']['v'] = ['Action_010']
+va_data['va']['tracking_actions']['d'] = "The list of actions to track"
+    
+va_data['va']['jump_pause_after_actions'] = {}
+va_data['va']['jump_pause_after_actions']['v'] = ['Action_010']
+va_data['va']['jump_pause_after_actions']['d'] = "The jump pause after actions"
+"""
+
+va_data['M'] = {}
+va_data['M']['d'] = "Input array"
+va_data['M']['v'] = [777, 55,66,777]
+va_data['M']['v'] = [1.4, 777, 5, 4.3, 7, 8, 777, 9,23, 777, 5, 6.5, 777, 3, 777, 5, 6.5, 777] 
+
+print(va_data['M']['d'],va_data['M']['v'])
+
+va_data = VA_box.start(va_data)
+
+print("\n" + str(va_data['sum_01']['d']), '[' + str(va_data['sum_01']['v']) + ']')
+print('\nThe end')
+
+#va_data['va']['script'] = {}
+#print(va_data['va'])
